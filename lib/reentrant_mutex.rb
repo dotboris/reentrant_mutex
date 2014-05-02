@@ -6,6 +6,16 @@ class ReentrantMutex < Mutex
     super
   end
 
+  def synchronize
+    raise ThreadError, 'Must be called with a block' unless block_given?
+
+    lock
+    ret = yield
+    unlock
+
+    ret
+  end
+
   def lock
     c = increase_count Thread.current
     super if c <= 1
