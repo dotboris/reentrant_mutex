@@ -26,12 +26,24 @@ describe ReentrantMutex do
 
       expect(mutex.locked?).to be_false
     end
+
+    it 'should be locked in the block' do
+      mutex.synchronize do
+        expect(mutex.locked?).to be_true
+      end
+    end
   end
 
   describe '#lock' do
     it 'should not deadlock when called twice' do
       mutex.lock
       expect{mutex.lock}.not_to raise_error
+    end
+
+    it 'should lock the mutex' do
+      mutex.lock
+
+      expect(mutex.locked?).to be_true
     end
   end
 
@@ -46,6 +58,13 @@ describe ReentrantMutex do
 
       expect{mutex.unlock}.not_to raise_error
       expect{mutex.unlock}.not_to raise_error
+    end
+
+    it 'should unlock the mutex' do
+      mutex.lock
+      mutex.unlock
+
+      expect(mutex.locked?).to be_false
     end
   end
 end
