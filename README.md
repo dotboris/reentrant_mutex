@@ -6,8 +6,8 @@ A simple gem that implements a [reentrant mutex](https://en.wikipedia.org/wiki/R
 Installation
 ------------
 
-1. Install it `gem install reentrant_lock`
-2. Require it `require 'reentrant_lock'`
+1. Install it `gem install reentrant_mutex`
+2. Require it `require 'reentrant_mutex'`
 3. Use it
 
 Usage
