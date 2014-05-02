@@ -9,11 +9,12 @@ class ReentrantMutex < Mutex
   def synchronize
     raise ThreadError, 'Must be called with a block' unless block_given?
 
-    lock
-    ret = yield
-    unlock
-
-    ret
+    begin
+      lock
+      yield
+    ensure
+      unlock
+    end
   end
 
   def lock
