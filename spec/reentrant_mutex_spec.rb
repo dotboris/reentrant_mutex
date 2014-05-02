@@ -20,6 +20,12 @@ describe ReentrantMutex do
     it 'should yield the block' do
       expect{|b| mutex.synchronize &b}.to yield_with_no_args
     end
+
+    it 'should leave the mutex unlocked' do
+      mutex.synchronize {}
+
+      expect(mutex.locked?).to be_false
+    end
   end
 
   describe '#lock' do
