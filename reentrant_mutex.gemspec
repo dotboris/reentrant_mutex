@@ -1,7 +1,7 @@
 # coding: utf-8
 Gem::Specification.new do |spec|
   spec.name          = 'reentrant_mutex'
-  spec.version       = '1.0.0'
+  spec.version       = '1.1.0'
   spec.authors       = ['Boris Bera']
   spec.email         = ['bboris@rsoft.ca']
   spec.summary       = %q{A simple reentrant/recursive mutex}
